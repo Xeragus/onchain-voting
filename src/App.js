@@ -1,9 +1,8 @@
 import './App.css';
 
 import Nav from './components/Nav';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import VotingRoom from './components/VotingRoom';
-import Results from './components/Results';
 
 function App() {
     return (
@@ -13,9 +12,6 @@ function App() {
                 <Routes >
                     <Route path="/"
                         element={< VotingRoom />}
-                    />
-                    <Route path="/results"
-                        element={< Results />}
                     />
                 </Routes>
             </header>
