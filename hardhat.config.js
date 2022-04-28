@@ -19,7 +19,7 @@ task("add-voters", "Gives voting rights to predefined voters")
     ];
 
     const MyBallotContract = await ethers.getContractFactory("Ballot");
-    const contract = await MyBallotContract.attach('0xd15eecc1e5c8B1F1CdBAE33E45337dB33573B35C');
+    const contract = await MyBallotContract.attach(process.env.BALLOT_CONTRACT_ADDRESS);
     
     for (const voter in voters) {
       await contract.giveRightToVote(voter);

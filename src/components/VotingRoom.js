@@ -6,7 +6,9 @@ import { ethers } from 'ethers';
 import React, { useState, useEffect } from 'react';
 import BallotContractArtifact from '../artifacts/contracts/Ballot.sol/Ballot.json'
 
-const ballotContractAddress = '0xd15eecc1e5c8B1F1CdBAE33E45337dB33573B35C';
+
+// const ballotContractAddress = process.env.BALLOT_CONTRACT_ADDRESS;
+const ballotContractAddress = '0x5BdE43dEc6138c4aE20C1A1682045804Aa016684';
 
 function App() {
     const [proposals, setProposals] = useState([]);

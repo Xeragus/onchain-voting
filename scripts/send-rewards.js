@@ -1,5 +1,4 @@
 const hre = require("hardhat");
-
 require('dotenv').config();
 
 async function main() {
@@ -9,13 +8,16 @@ async function main() {
     ];
 
     const MyBallotContract = await hre.ethers.getContractFactory("Ballot");
-    const contract = await MyBallotContract.attach(process.env.BALLOT_CONTRACT_ADDRESS);
+    const ballotContract = await MyBallotContract.attach(process.env.BALLOT_CONTRACT_ADDRESS);
+    const MakedoniumContract = await hre.ethers.getContractFactory("MKDUMToken");
+    const makedoniumContract = await MakedoniumContract.attach(process.env.MAKEDONIUM_CONTRACT_ADDRESS);
     
     for (const voter of voters) {
-        console.log(voter);
-        await contract.giveRightToVote(voter);
+        const hasVoted = await ballotContract.hasVoted(voter);
 
-        console.log("A voting right given to: ", voter);
+        if (hasVoted) {
+            await makedoniumContract.transfer(voter, 100000000000);
+        }
     }
 
     // const Ballot = await hre.ethers.getContractFactory("Ballot");

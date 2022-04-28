@@ -26,6 +26,11 @@ async function main() {
   await ballotContractInstance.deployed();
 
   console.log("Ballot deployed to: ", ballotContractInstance.address);
+
+  const MAKEDONIUMTokenContract = await hre.ethers.getContractFactory("MKDUMToken");
+  const makedoniumContractInstance = await MAKEDONIUMTokenContract.deploy();
+  await makedoniumContractInstance.deployed();
+  console.log("MAKEDONIUM token contract deployed to:", makedoniumContractInstance.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

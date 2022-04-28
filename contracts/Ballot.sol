@@ -142,4 +142,8 @@ contract Ballot {
         }
         return items;
     }
+
+    function hasVoted(address voter) external view returns(bool) {
+        return voters[voter].voted;
+    }
 }
